@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lista pojazdów</title></head>
+<body>
+<h2>Lista pojazdów</h2>
+<a href="{{ url_for('add_vehicle') }}">➕ Dodaj pojazd</a> | <a href="{{ url_for('logout') }}">Wyloguj</a><br><br>
+<div style="display: flex; flex-wrap: wrap;">
+  {% for vehicle in vehicles %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 5px; width: 150px;">
+      {% if vehicle.image %}
+        <img src="{{ url_for('static', filename='uploads/' ~ vehicle.image) }}" width="100%"><br>
+      {% endif %}
+      <strong>{{ vehicle.make }}</strong><br>
+      {{ vehicle.model }}
+    </div>
+  {% endfor %}
+</div>
+</body>
+</html>
